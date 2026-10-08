@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Pixel Detection | Multi-Algorithm Skin Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="description"
+        content="Advanced skin pixel detection using Log Opponent, YIQ, HSV, and YCbCr algorithms with graphical comparison.">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Skin Pixel Detection & Analysis</h1>
+            <p class="subtitle">Developed by Gururaj Surampalli</p>
+        </header>
+
+        <main>
+            <div class="upload-section" onclick="document.getElementById('image-input').click()">
+                <div class="upload-icon">📸</div>
+                <h2>Upload Image</h2>
+                <p>Click or drag and drop image here to analyze</p>
+                <input type="file" id="image-input" accept="image/*">
+                <button class="btn">Select Image</button>
+            </div>
+
+            <div id="original-preview-container" class="hidden">
+                <h2>Original Image</h2>
+                <img id="original-preview" src="" alt="Original Image">
+            </div>
+
+            <div id="results-container" class="hidden">
+                <div class="results-grid">
+                    <div class="result-card" style="animation-delay: 0.1s">
+                        <h3>Log Opponent</h3>
+                        <canvas id="canvas-log"></canvas>
+                        <p class="stats" id="stats-log">Pixels detected: 0</p>
+                    </div>
+                    <div class="result-card" style="animation-delay: 0.2s">
+                        <h3>YIQ</h3>
+                        <canvas id="canvas-yiq"></canvas>
+                        <p class="stats" id="stats-yiq">Pixels detected: 0</p>
+                    </div>
+                    <div class="result-card" style="animation-delay: 0.3s">
+                        <h3>HSV</h3>
+                        <canvas id="canvas-hsv"></canvas>
+                        <p class="stats" id="stats-hsv">Pixels detected: 0</p>
+                    </div>
+                    <div class="result-card" style="animation-delay: 0.4s">
+                        <h3>YCbCr</h3>
+                        <canvas id="canvas-ycbcr"></canvas>
+                        <p class="stats" id="stats-ycbcr">Pixels detected: 0</p>
+                    </div>
+                </div>
+
+                <section class="comparison-section">
+                    <h2>Graphical Comparison</h2>
+                    <div class="chart-container">
+                        <canvas id="comparison-chart"></canvas>
+                    </div>
+                </section>
+
+                <div class="suggestion-box">
+                    <h2>System Recommendation</h2>
+                    <p>Based on pixel density and noise reduction:</p>
+                    <p class="best-algo" id="recommendation-text">Analyzing...</p>
+                    <p id="recommendation-reason" style="color: var(--text-dim); margin-top: 0.5rem;"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
